@@ -5,7 +5,7 @@ import Label from "@/components/form/Label";
 import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 
 export default function SignInForm() {
@@ -16,6 +16,7 @@ export default function SignInForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,9 +35,14 @@ export default function SignInForm() {
       const data = await response.json();
 
       if (response.ok) {
-        // Redirect to dashboard - token cookie is set by the server
-        console.log("Login successful, redirecting to dashboard");
-        router.push('/dashboard');
+        // Get redirect path from URL parameters
+        const from = searchParams?.get('from');
+        const redirectPath = from ? decodeURIComponent(from) : '/dashboard';
+        
+        console.log("Login successful, redirecting to", redirectPath);
+        
+        // Use window.location for a full page refresh to ensure cookies are properly set
+        window.location.href = redirectPath;
       } else {
         setError(data.message || "Invalid email or password");
       }
