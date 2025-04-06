@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import type { NextRequest } from 'next/server';
 
 interface Book {
   id: string;
@@ -38,13 +39,14 @@ const writeDB = (data: Database) => {
 };
 
 export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params;
     const formData = await request.formData();
     const db = readDB();
-    const bookIndex = db.books.findIndex((book) => book.id === params.id);
+    const bookIndex = db.books.findIndex((book) => book.id === id);
 
     if (bookIndex === -1) {
       return NextResponse.json(
@@ -96,12 +98,13 @@ export async function PUT(
 }
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params;
     const db = readDB();
-    const bookIndex = db.books.findIndex((book) => book.id === params.id);
+    const bookIndex = db.books.findIndex((book) => book.id === id);
 
     if (bookIndex === -1) {
       return NextResponse.json(
