@@ -6,9 +6,10 @@ import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 
-export default function SignInForm() {
+// Separate component that uses searchParams
+function SignInFormContent() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");
@@ -213,5 +214,32 @@ export default function SignInForm() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Fallback component to show while loading
+function SignInFormFallback() {
+  return (
+    <div className="flex flex-col flex-1 lg:w-1/2 w-full">
+      <div className="w-full max-w-md sm:pt-10 mx-auto mb-5">
+        <div className="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+      </div>
+      <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
+        <div className="space-y-6">
+          <div className="h-8 w-48 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+          <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+          <div className="h-40 w-full bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Main export with Suspense boundary
+export default function SignInForm() {
+  return (
+    <Suspense fallback={<SignInFormFallback />}>
+      <SignInFormContent />
+    </Suspense>
   );
 }
