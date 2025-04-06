@@ -36,7 +36,7 @@ export default function SignInForm() {
       if (response.ok) {
         // Redirect to dashboard - token cookie is set by the server
         console.log("Login successful, redirecting to dashboard");
-        router.push("/");
+        router.push('/dashboard');
       } else {
         setError(data.message || "Invalid email or password");
       }

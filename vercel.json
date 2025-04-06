@@ -7,7 +7,7 @@
     }
   ],
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://${VERCEL_URL}/api"
+    "NEXT_PUBLIC_API_URL": "https://bookstore-xi-five.vercel.app/api"
   },
   "headers": [
     {
