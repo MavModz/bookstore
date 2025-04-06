@@ -1,0 +1,48 @@
+{
+  "books": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "978-0743273565",
+      "price": 9.99,
+      "description": "A story of decadence and excess.",
+      "category": "fiction",
+      "id": "m940husg9u63vnwxaxc",
+      "createdAt": "2025-04-05T09:29:08.896Z",
+      "updatedAt": "2025-04-05T09:29:08.896Z"
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "isbn": "978-0451524935",
+      "price": 12.99,
+      "description": "A dystopian social science fiction novel.",
+      "category": "fiction",
+      "id": "m940husgbda5tldsai4",
+      "createdAt": "2025-04-05T09:29:08.896Z",
+      "updatedAt": "2025-04-05T09:29:08.896Z"
+    },
+    {
+      "title": "Hauntin",
+      "author": "Gaurav",
+      "isbn": "123",
+      "price": 11,
+      "description": "SDADA",
+      "category": "CHILDREN",
+      "id": "m940p191odlusol19ee",
+      "createdAt": "2025-04-05T09:34:43.861Z",
+      "updatedAt": "2025-04-05T09:34:43.861Z"
+    },
+    {
+      "title": "New Boook",
+      "author": "Rohan",
+      "isbn": "1234",
+      "price": 100,
+      "description": "test",
+      "category": "non-fiction",
+      "id": "m94byk4lbz1ggyhov77",
+      "createdAt": "2025-04-05T14:50:04.005Z",
+      "updatedAt": "2025-04-05T14:50:04.005Z"
+    }
+  ]
+}
